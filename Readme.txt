@@ -1,1 +1,4 @@
-# Clean Architecture dot-net Core MVC
+#Clean Architecture dot-net Core MVC
+- code first database
+- repository + unitOWork
+- DI
