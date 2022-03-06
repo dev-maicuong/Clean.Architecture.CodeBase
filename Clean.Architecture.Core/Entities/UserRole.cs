@@ -13,7 +13,7 @@ namespace Clean.Architecture.Core.Entities
         public User user { set; get; }
         [ForeignKey("roleId")]
         public Role Role { set; get; }
-        public int userId { set; get; }
-        public int roleId { set; get; }
+        public long userId { set; get; }
+        public long roleId { set; get; }
     }
 }

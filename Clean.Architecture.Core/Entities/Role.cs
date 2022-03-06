@@ -8,7 +8,7 @@ namespace Clean.Architecture.Core.Entities
 {
     public class Role
     {
-        public int roleId { set; get; }
+        public long roleId { set; get; }
         public string roleName { set; get; }
         public string description { set; get; }
         //reference

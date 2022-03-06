@@ -8,7 +8,7 @@ namespace Clean.Architecture.Core.Entities
 {
     public class User
     {
-        public int userId { set; get; }
+        public long userId { set; get; }
         public string email { set; get; }
         public string pass { set; get; }
         public string firstName { set; get; }

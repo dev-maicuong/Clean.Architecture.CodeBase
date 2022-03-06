@@ -8,7 +8,7 @@ namespace Clean.Architecture.Core.Entities
 {
     public class UserDetail
     {
-        public int userDetailId { set; get; }
+        public long userDetailId { set; get; }
         public DateTime createDay { set; get; }
         public DateTime updateDay { set; get; }
         //reference

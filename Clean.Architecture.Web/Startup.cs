@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Clean.Architecture.Infrastructure.Data.EF;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Clean.Architecture.Core.Interfaces;
+using Clean.Architecture.Core.Services;
+using Clean.Architecture.Core.Repositorys.Infratructure;
+using Clean.Architecture.Infrastructure.Repositorys.Infratructure;
+using Clean.Architecture.Web.Extensions;
 
 namespace Clean.Architecture.Web
 {
@@ -19,11 +27,22 @@ namespace Clean.Architecture.Web
         }
 
         public IConfiguration Configuration { get; }
+        public static readonly ILoggerFactory loggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddFilter(DbLoggerCategory.Query.Name, LogLevel.Information);
+            //builder.AddFilter(DbLoggerCategory.Database.Name, LogLevel.Information);
+            builder.AddConsole();
+        });
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContexts(Configuration);
+
+            // Add các dịch vụ
+            services.AddServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
